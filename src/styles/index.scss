@@ -1,0 +1,136 @@
+body {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #2d4054;
+  background: #F3F3F3;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+div:focus{
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+.pull-left {
+  float: left!important;
+}
+.pull-right {
+  float: right!important;
+}
+
+
+@mixin loop($start, $end, $step, $className,$propertyName){
+	@while $start <= $end {
+		.#{$className}-#{$start} {
+			#{$propertyName}: ($start * 1px);
+		}
+	    $start: $start + $step;
+	}
+
+}
+
+// font-size
+@include loop(10,48,1, fs, font-size);
+
+// disabled in mobile
+@media (min-width: 768px) {
+  // padding
+  @include loop(0,20,1, pt, padding-top);
+  @include loop(0,20,1, pr, padding-right);
+  @include loop(0,20,1, pb, padding-bottom);
+  @include loop(0,20,1, pl, padding-left);
+
+  @include loop(25,65,5, pt, padding-top);
+  @include loop(25,65,5, pr, padding-right);
+  @include loop(25,65,5, pb, padding-bottom);
+  @include loop(25,65,5, pl, padding-left);
+	
+}
+
+// margin
+@include loop(0,20,1, mt, margin-top);
+@include loop(0,20,1, mr, margin-right);
+@include loop(0,20,1, mb, margin-bottom);
+@include loop(0,20,1, ml, margin-left);
+
+@include loop(25,65,5, mt, margin-top);
+@include loop(25,65,5, mr, margin-right);
+@include loop(25,65,5, mb, margin-bottom);
+@include loop(25,65,5, ml, margin-left);
+
+
+.user-dropdown {
+  border-radius: 0px;
+  padding: 5px 0px;
+  border: 1px solid rgb(235, 238, 245);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+
+  .el-dropdown-menu__item:focus, 
+  .el-dropdown-menu__item:not(.is-disabled):hover {
+    background-color:#efefef;
+    color: #2d4054;
+  }
+
+  .popper__arrow {
+    display: none;
+  }
+}
+
+.popup {
+  border-color: #54B3CD;
+  border-radius: 0px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+  &[x-placement^=top] .popper__arrow {
+    border-top-color: #54B3CD;
+    border-top: 10px solid #54B3CD;
+    bottom: -10px;
+    &::after {
+      border-width: 6px;
+      border-top-width: 10px;
+      bottom: -4px;
+    }
+  }
+  &[x-placement^=bottom] .popper__arrow {
+    border-bottom-color: #54B3CD;
+    border-bottom: 10px solid #54B3CD;
+    top: -10px;
+    &::after {
+      border-width: 6px;
+      border-bottom-width: 10px;
+      top: -4px;
+    }
+  }
+}
+
