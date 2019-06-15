@@ -16,8 +16,11 @@ https://unpkg.com/@vue-materials/admin-lite@1.0.12/dist/index.html#/
 
 ## dev server
 
+```sh
 npm run server
+
 npm start
+```
 
 
 
