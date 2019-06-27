@@ -1,6 +1,6 @@
 # vue-boilerplate
 
-interview
+vue-spa-boilerplate
 
 ## Technology stack
 
